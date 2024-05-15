@@ -19,10 +19,10 @@ st.subheader("BLIPify your artistic curiosity with a question below")
 
 with st.sidebar:
     image_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png", "webp"])
-    question = st.text_area("Your BLIPification Question")
+    question = st.text_input("Your BLIPification Question")
 
 if image_file and question:
     image = Image.open(image_file)
-    st.image(image, caption='Uploaded Artwork', use_column_width=True)
+    st.image(image)
     answer = blipify_image(image, question)
     st.write(f"**BLIPified Answer:** {answer}")  # Emphasize answer with bold text
