@@ -13,16 +13,20 @@ def blipify_image(image, question):
     answer = processor.decode(out[0], skip_special_tokens=True)
     return answer.title()  # Capitalize the first letter of the answer
 
+
 st.title("BLIPify: Unlock the Secrets of Art")
 
 st.subheader("BLIPify your artistic curiosity with a question below")
 
-with st.sidebar:
+col1, col2 = st.columns(2)
+
+with col1:
     image_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png", "webp"])
     question = st.text_input("Your BLIPification Question")
 
-if image_file and question:
-    image = Image.open(image_file)
-    st.image(image)
-    answer = blipify_image(image, question)
-    st.write(f"**BLIPified Answer:** {answer}")  # Emphasize answer with bold text
+with col2:
+    if image_file and question:
+        image = Image.open(image_file)
+        st.image(image, use_column_width=True)
+        answer = blipify_image(image, question)
+        st.write(f"**BLIPified Answer:** {answer}")  # Emphasize answer with bold text
