@@ -7,8 +7,8 @@ import logging
 # Setup logging
 logging.basicConfig(filename='blipify.log', level=logging.ERROR)
 
-processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-capfilt-large")
-model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-capfilt-large")
+processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-capfilt-large", force_download=False)
+model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-capfilt-large", force_download=False)
 
 def blipify_image(image, question):
     """BLIPifies an image to answer your art exploration question."""
